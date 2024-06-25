@@ -13,3 +13,10 @@
 <slot />
 
 <Toast />
+
+<style>
+	:root {
+		font-size: 100%;
+		line-height: 1.5;
+	}
+</style>
