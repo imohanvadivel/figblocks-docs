@@ -11,6 +11,8 @@ index: 2
 	import colorData from '$lib/utils/colorData.json';
   import ColorTable from "$lib/components/ColorList.svelte";
   import ColorList from "$lib/components/ColorList.svelte";
+  import Info from "$lib/components/Info.svelte";
+  import Code from "$lib/customComponent/Code.svelte";
 </script>
 
 # Color
@@ -34,6 +36,12 @@ figma.showUI(__html__, { themeColors: true })
 
 - For more information on theming, checkout [CSS Variables and theming](https://www.figma.com/plugin-docs/css-variables/).
 
+<Info header="Tip" type="info" maxWidth="47rem">
+When prototyping outside the Figma canvas, such as in a browser, the color tokens won't be accessible. In such instances, you can import the 'figmaTheme' from 'figblocks' to use those colors.
 
+```js
+import "figblocks/figmaTheme";
+```
+</Info>
 
 <ColorList />

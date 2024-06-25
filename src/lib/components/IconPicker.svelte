@@ -2,7 +2,10 @@
 	import { Icon } from 'figblocks';
 	import * as icons from 'figblocks/icons';
 	import { toastMessage } from '$lib/store';
+	import { tr } from '$lib/customComponent/componentLayout.svelte';
 
+	let inputisFocused = false;
+	let searchby = '';
 	function splitOnCaps(str: string) {
 		let strAry = str.match(/[A-Z][a-z]+/g);
 		return strAry?.slice(1).join(' ');
@@ -33,7 +36,22 @@
 </script>
 
 <div class="wrapper">
-	<input class="search" type="search" placeholder="Search Icons" on:input={handleSearch} />
+	<div class="search-cnt">
+		<Icon
+			iconSvg={icons.IconSearch}
+			color={inputisFocused ? '--color-text' : '--color-text-secondary'}
+		/>
+		<input
+			class="search"
+			type="search"
+			bind:value={searchby}
+			placeholder="Search Icons"
+			on:input={handleSearch}
+			on:focus={() => (inputisFocused = true)}
+			on:blur={() => (inputisFocused = false)}
+		/>
+		<div class="close-icon" class:active={searchby.length > 0}>×</div>
+	</div>
 
 	{#if iconAry.length === 0}
 		<p class="no-icons">No icons found</p>
@@ -53,6 +71,15 @@
 	.wrapper {
 		grid-column: span 4;
 		max-width: 47rem;
+	}
+	.search-cnt {
+		position: relative;
+		width: fit-content;
+	}
+	.search-cnt :global(.icon-component) {
+		position: absolute;
+		top: 1rem;
+		left: 0.125rem;
 	}
 	section {
 		display: grid;
@@ -78,9 +105,9 @@
 	}
 
 	button:hover {
-		box-shadow: inset 0 0 0 2px var(--color-border-strong);
+		box-shadow: inset 0 0 0 2px var(--color-border-brand-strong);
 		z-index: 5;
-		background-color: var(--color-bg-secondary);
+		background-color: var(--figma-color-bg-brand-tertiary);
 	}
 	button:active {
 		box-shadow: inset 0 0 0 2px var(--color-border);
@@ -98,23 +125,45 @@
 		line-clamp: 2;
 		-webkit-box-orient: vertical;
 	}
-
+	button:hover span {
+		color: var(--color-text);
+	}
 	.search {
+		color: var(--color-text);
 		border: var(--color-border);
 		background-color: var(--color-bg-secondary);
 		border: 1px solid var(--color-border);
 		border-radius: 4px;
 		height: 2rem;
 		grid-column: span 2;
-		/* text-indent: 1rem; */
 		padding: 0 1rem;
 		font-size: 0.875rem;
 		margin-top: 1rem;
 		margin-bottom: 1rem;
+		text-indent: 1rem;
+		width: 14rem;
+	}
+	input[type='search']::-webkit-search-cancel-button {
+		-webkit-appearance: none;
+		appearance: none;
+		height: 1em;
+		width: 4em;
+	}
+	.close-icon {
+		position: absolute;
+		top: 1.25rem;
+		right: 1.25rem;
+		color: var(--color-text);
+		display: none;
+		pointer-events: none;
+		cursor: default;
+	}
+	.close-icon.active {
+		display: block;
 	}
 
 	.search:focus {
-		outline: 2px solid var(--color-text);
+		outline: 2px solid var(--color-border-brand-strong);
 	}
 
 	.no-icons {

@@ -1,14 +1,7 @@
-<!-- <script lang="ts">
-	export let title = '';
-</script>
-
-<div>
-  <h2>{title}</h2>
-	<p><slot /></p>
-</div> -->
 <script lang="ts">
 	export let header: string;
 	export let type: 'info' | 'warning' | 'danger' | 'success';
+	export let maxWidth: string;
 
 	$: bgColor = {
 		info: 'var(--color-bg-brand-secondary)',
@@ -32,7 +25,7 @@
 	};
 </script>
 
-<section style="background-color: {bgColor[type]}; border: 0.0625rem solid {borderColor[type]};">
+<section style="background-color: {bgColor[type]}; border: 0.0625rem solid {borderColor[type]}; --info-max-width: {maxWidth}">
 	{#if header}
 		<h3 style="color: {textColor[type]}">{header}</h3>
 	{/if}
@@ -56,6 +49,7 @@
 		margin-top: 1rem;
 		margin-bottom: 1.5rem;
 		color: var(--color-text);
+		max-width: var(--info-max-width);
 	}
 
 	section :global(ul) {
