@@ -8,7 +8,7 @@ url: /home
 
 # Figblocks
 
-Open-source UI component library for building Figma plugins based on svelte
+An open-source UI component library for building Figma plugins with [svelte](https://svelte.dev/).
 
 ![banner](/assets/banner.png)
 
