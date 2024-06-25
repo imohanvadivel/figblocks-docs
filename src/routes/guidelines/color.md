@@ -12,7 +12,7 @@ index: 2
   import ColorTable from "$lib/components/ColorList.svelte";
   import ColorList from "$lib/components/ColorList.svelte";
   import Info from "$lib/components/Info.svelte";
-  import Code from "$lib/customComponent/Code.svelte";
+  import Code from "$lib/customComponent/code.svelte";
 </script>
 
 # Color
