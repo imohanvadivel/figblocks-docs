@@ -45,6 +45,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"figblocks": "^0.0.9"
+		"figblocks": "^0.0.10"
 	}
 }
