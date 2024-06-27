@@ -7,7 +7,7 @@
 	import { fade } from 'svelte/transition';
 	import { tooltip } from '$lib/utils/tooltip.js';
 
-	const version = `0.0.9`;
+	const version = `0.0.10`;
 </script>
 
 <header transition:fade>

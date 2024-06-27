@@ -1,7 +1,7 @@
 
 # Figblocks
 
-Open-source UI component library for building Figma plugins based on svelte
+An Open-source UI component library for building Figma plugins with svelte.
 
 ![banner](/static/assets/banner.png)
 
